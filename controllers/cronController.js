@@ -39,7 +39,7 @@ exports.runExportJobs = async (req, res) => {
 
         const finalRows = rows.map(r => ({
           Name: r.Name,
-          Designation: r.Designation_Group,
+          Designation: r.Designation,
           Email: r.Email,
           Phone: r.Phone,
           'LinkedIn URL': r['LinkedIn URL'],

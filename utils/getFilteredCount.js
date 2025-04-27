@@ -2,7 +2,7 @@ const { peopleDb: db } = require('../config/duckdb');
 
 module.exports = function getFilteredCount(filters = {}) {
   const allowedFields = [
-    'Designation_Group',
+    'Designation',
     'Email Status',
     'Organization',
     'City',
@@ -18,7 +18,12 @@ module.exports = function getFilteredCount(filters = {}) {
       const safeVals = values
         .map(v => `'${v.toLowerCase().replace(/'/g, "''")}'`)
         .join(', ');
-      conditions.push(`LOWER("${field}") IN (${safeVals})`);
+
+      if (field === 'Designation') {
+        conditions.push(`(LOWER(Designation) IN (${safeVals}) OR LOWER(Designation_Group) IN (${safeVals}))`);
+      } else {
+        conditions.push(`LOWER("${field}") IN (${safeVals})`);
+      }
     }
   }
 

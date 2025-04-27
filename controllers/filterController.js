@@ -76,7 +76,7 @@ exports.getEmailOrPhone = async (req, res) => {
 
 //Search Params
 exports.searchOptions = (req, res) => {
-  const { field, query } = req.body;
+  const { field, query, page = 1 } = req.body;
 
   if (!field || !query) {
     return res.status(400).json({ error: 'field and query are required' });
@@ -88,7 +88,7 @@ exports.searchOptions = (req, res) => {
 
   const safeField = field.replace(/[^a-zA-Z_]/g, '');
   const safeQuery = query.replace(/'/g, "''").toLowerCase();
-  const limit = 10;
+  const limit = 100;
 
   const sql = `
     SELECT DISTINCT Value

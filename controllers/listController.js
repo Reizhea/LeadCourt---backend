@@ -133,7 +133,7 @@ exports.showList = async (req, res) => {
 
     const peopleRows = await new Promise((resolve, reject) => {
       peopleDb.all(`
-        SELECT row_id, Name, Designation_Group AS Designation, Email, Phone, Organization, City, State, Country
+        SELECT row_id, Name, Designation, Email, Phone, Organization, City, State, Country
         FROM people
         WHERE row_id IN (${rowIdStr});
       `, (err, rows) => err ? reject(err) : resolve(rows));
