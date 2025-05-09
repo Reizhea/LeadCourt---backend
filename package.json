@@ -17,6 +17,7 @@
     "dotenv": "^16.5.0",
     "duckdb": "^1.2.1",
     "express": "^5.1.0",
+    "fast-levenshtein": "^3.0.0",
     "json2csv": "^6.0.0-alpha.2",
     "mongodb": "^6.15.0",
     "mongoose": "^8.13.2",

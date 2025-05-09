@@ -7,13 +7,13 @@ const listRoute = require('./routes/listRoute');
 const swaggerUi = require('swagger-ui-express');
 const swaggerSpec = require('./config/swagger');
 const cronRoutes = require('./routes/cronRoute');
+const { peopleDb: db } = require('./config/duckdb');
 const app = express();
-
+db.run(`CREATE TEMP TABLE IF NOT EXISTS filter_ids(row_id INTEGER)`);
 app.use(cors({
   origin: '*',
 }));
 app.use(bodyParser.json());
-
 app.use('/api/filter', filterRoute);
 app.use('/api/cron', cronRoutes);
 app.use('/api/list', listRoute);

@@ -46,7 +46,9 @@ exports.runExportJobs = async (req, res) => {
           Organization: r.Organization,
           City: r.City,
           State: r.State,
-          Country: r.Country
+          Country: r.Country,
+          'Org Size': r['Org Size'],
+          'Org Industry': r['Org Industry'],
         }));
 
         const parser = new Parser();
